@@ -1,0 +1,68 @@
+
+        <!DOCTYPE html>
+        <html><head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>Country Dashboard </title>
+        <script type='text/javascript' src='//code.jquery.com/jquery-1.9.1.js'></script>
+        <script type='text/javascript' src='jquery-1.9.1.js'></script>
+        <script type='text/javascript'>
+
+        $(window).load(function() {
+
+           var data = "WB_WDI_ZAF.json"; // link to the dataset
+
+           $.getJSON(data, function(json) {
+             $(function() {
+               $('#container').highcharts({
+               chart: {type: 'spline'},
+                //plotOptions: { column: { colorByPoint: true } },
+                colors: ['#6e9fc5', '#ffdf51', '#a6ca6d', '#ad46d6', '#f26a2e', '#00adef', '#f4bb90'],
+                 title: {
+                   text: json["SP.POP.1564.TO.ZS"]["label"], x: -20 //center
+                     },
+                 subtitle: {
+                   text: 'Source: '+ json["data_source"]["source"] + ', Download date:'+ json["data_source"]["Download_date"], x: -20
+                 },
+                 xAxis: {valueDecimals: 0, tickInterval:1,
+                   categories: [ json["SP.POP.1564.TO.ZS"]["YearMax"] +-14,json["SP.POP.1564.TO.ZS"]["YearMax"] +-13,json["SP.POP.1564.TO.ZS"]["YearMax"] +-12,json["SP.POP.1564.TO.ZS"]["YearMax"] +-11,json["SP.POP.1564.TO.ZS"]["YearMax"] +-10,json["SP.POP.1564.TO.ZS"]["YearMax"] +-9,json["SP.POP.1564.TO.ZS"]["YearMax"] +-8,json["SP.POP.1564.TO.ZS"]["YearMax"] +-7,json["SP.POP.1564.TO.ZS"]["YearMax"] +-6,json["SP.POP.1564.TO.ZS"]["YearMax"] +-5,json["SP.POP.1564.TO.ZS"]["YearMax"] +-4,json["SP.POP.1564.TO.ZS"]["YearMax"] +-3,json["SP.POP.1564.TO.ZS"]["YearMax"] +-2,json["SP.POP.1564.TO.ZS"]["YearMax"] +-1,json["SP.POP.1564.TO.ZS"]["YearMax"] +0] //python created array 
+                 },
+                 yAxis: {
+                   title: {
+                     text: json["SP.POP.1564.TO.ZS"]["label"]
+                   },
+                   plotLines: [{
+                     value: 0,
+                     width: 1,
+                     color: '#808080'
+                   }]
+                 },
+                 tooltip: {
+                   valueSuffix: '',
+                   valueDecimals: 2
+                 },
+                   series: [{
+                   name: json["ZAF"]["country"],
+                   data: [json["SP.POP.1564.TO.ZS"]["ZAF" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-14)],json["SP.POP.1564.TO.ZS"]["ZAF" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-13)],json["SP.POP.1564.TO.ZS"]["ZAF" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-12)],json["SP.POP.1564.TO.ZS"]["ZAF" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-11)],json["SP.POP.1564.TO.ZS"]["ZAF" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-10)],json["SP.POP.1564.TO.ZS"]["ZAF" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-9)],json["SP.POP.1564.TO.ZS"]["ZAF" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-8)],json["SP.POP.1564.TO.ZS"]["ZAF" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-7)],json["SP.POP.1564.TO.ZS"]["ZAF" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-6)],json["SP.POP.1564.TO.ZS"]["ZAF" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-5)],json["SP.POP.1564.TO.ZS"]["ZAF" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-4)],json["SP.POP.1564.TO.ZS"]["ZAF" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-3)],json["SP.POP.1564.TO.ZS"]["ZAF" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-2)],json["SP.POP.1564.TO.ZS"]["ZAF" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-1)],json["SP.POP.1564.TO.ZS"]["ZAF" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+0)]]
+                 }, {
+                   name: json["ZAF"]["incomegroup"],
+                   data: [json["SP.POP.1564.TO.ZS"]["UMC" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-14)],json["SP.POP.1564.TO.ZS"]["UMC" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-13)],json["SP.POP.1564.TO.ZS"]["UMC" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-12)],json["SP.POP.1564.TO.ZS"]["UMC" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-11)],json["SP.POP.1564.TO.ZS"]["UMC" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-10)],json["SP.POP.1564.TO.ZS"]["UMC" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-9)],json["SP.POP.1564.TO.ZS"]["UMC" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-8)],json["SP.POP.1564.TO.ZS"]["UMC" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-7)],json["SP.POP.1564.TO.ZS"]["UMC" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-6)],json["SP.POP.1564.TO.ZS"]["UMC" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-5)],json["SP.POP.1564.TO.ZS"]["UMC" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-4)],json["SP.POP.1564.TO.ZS"]["UMC" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-3)],json["SP.POP.1564.TO.ZS"]["UMC" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-2)],json["SP.POP.1564.TO.ZS"]["UMC" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-1)],json["SP.POP.1564.TO.ZS"]["UMC" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+0)]]
+                 }, {
+                   name: json["ZAF"]["region"],
+                   data: [ json["SP.POP.1564.TO.ZS"]["SSF" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-14)],json["SP.POP.1564.TO.ZS"]["SSF" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-13)],json["SP.POP.1564.TO.ZS"]["SSF" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-12)],json["SP.POP.1564.TO.ZS"]["SSF" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-11)],json["SP.POP.1564.TO.ZS"]["SSF" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-10)],json["SP.POP.1564.TO.ZS"]["SSF" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-9)],json["SP.POP.1564.TO.ZS"]["SSF" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-8)],json["SP.POP.1564.TO.ZS"]["SSF" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-7)],json["SP.POP.1564.TO.ZS"]["SSF" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-6)],json["SP.POP.1564.TO.ZS"]["SSF" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-5)],json["SP.POP.1564.TO.ZS"]["SSF" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-4)],json["SP.POP.1564.TO.ZS"]["SSF" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-3)],json["SP.POP.1564.TO.ZS"]["SSF" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-2)],json["SP.POP.1564.TO.ZS"]["SSF" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-1)],json["SP.POP.1564.TO.ZS"]["SSF" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+0)]]
+                 }, {
+                   name: 'World',
+                   data: [json["SP.POP.1564.TO.ZS"]["WLD" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-14)],json["SP.POP.1564.TO.ZS"]["WLD" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-13)],json["SP.POP.1564.TO.ZS"]["WLD" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-12)],json["SP.POP.1564.TO.ZS"]["WLD" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-11)],json["SP.POP.1564.TO.ZS"]["WLD" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-10)],json["SP.POP.1564.TO.ZS"]["WLD" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-9)],json["SP.POP.1564.TO.ZS"]["WLD" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-8)],json["SP.POP.1564.TO.ZS"]["WLD" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-7)],json["SP.POP.1564.TO.ZS"]["WLD" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-6)],json["SP.POP.1564.TO.ZS"]["WLD" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-5)],json["SP.POP.1564.TO.ZS"]["WLD" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-4)],json["SP.POP.1564.TO.ZS"]["WLD" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-3)],json["SP.POP.1564.TO.ZS"]["WLD" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-2)],json["SP.POP.1564.TO.ZS"]["WLD" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+-1)],json["SP.POP.1564.TO.ZS"]["WLD" + (json["SP.POP.1564.TO.ZS"]["YearMax"]+0)]]
+                 }]
+               });
+             });
+           });
+         });
+
+        </script></head><body>
+        <script src="highcharts.js"></script>
+        <script src="exporting.js"></script>
+        <script src="http://code.highcharts.com/highcharts.js"></script>
+        <script src="http://code.highcharts.com/modules/exporting.js"></script>
+        <div id="container" style="width: 100%; height: 100%; margin: 0 auto"></div>
+        </body></html>
+        
